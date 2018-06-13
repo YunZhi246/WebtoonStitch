@@ -1,21 +1,36 @@
-﻿<Window x:Class="WebtoonStitch.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebtoonStitch"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="WebtoonStitch.MainWindow"
         mc:Ignorable="d"
         Title="Webtoon Stitch" Height="639" Width="967" ResizeMode="NoResize">
-    <Grid>
-        <ListBox x:Name="FilesListBox" HorizontalAlignment="Left" Height="552" Margin="37,35,0,0" VerticalAlignment="Top" Width="588" Visibility="Hidden"/>
-        <Button x:Name="StitchButton" Content="Stitch Images" HorizontalAlignment="Left" Height="38" Margin="738,224,0,0" VerticalAlignment="Top" Width="96" Click="StitchButton_Click" Visibility="Hidden"/>
-        <Viewbox x:Name="PreviewViewbox" HorizontalAlignment="Left" Height="590" Margin="10,10,0,0" VerticalAlignment="Top" Width="800">
-            <ScrollViewer x:Name="PreviewScrollViewer" Height="591" Width="804" Background="#FFB7FCFF">
-                <Image x:Name="PreviewImage" Height="0" Width="774"/>
+    <Grid  >
+
+        <Grid x:Name="StartGrid" HorizontalAlignment="Left" Height="590" Margin="10,10,0,0" VerticalAlignment="Top" Width="941" Visibility="Hidden"  >
+            <Button x:Name="StartButton" Content="Start" HorizontalAlignment="Left" Margin="413,262,0,0" VerticalAlignment="Top" Width="134" Height="43" Click="StartButton_Click"  />
+        </Grid>
+
+        <Grid x:Name="ShowFilesGrid" HorizontalAlignment="Left" Height="590" Margin="10,10,0,0" VerticalAlignment="Top" Width="941" Visibility="Hidden"  >
+            <ListBox x:Name="FilesListBox" HorizontalAlignment="Left" Height="526" Margin="37,35,0,0" VerticalAlignment="Top" Width="521"  />
+            <CheckBox x:Name="CustomWidthCheckBox" Content="Custom Width" HorizontalAlignment="Left" Margin="783,178,0,0" VerticalAlignment="Top" Click="CustomWidthCheckBox_Click"  />
+            <TextBox x:Name="CustomWidthTextBox" HorizontalAlignment="Left" Height="23" Margin="612,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+            <Button x:Name="StitchButton" Content="Stitch Images" HorizontalAlignment="Left" Height="38" Margin="700,256,0,0" VerticalAlignment="Top" Width="96" Click="StitchButton_Click"  />
+            <Button x:Name="FilesCancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="711,414,0,0" VerticalAlignment="Top" Width="75" Click="FilesCancelButton_Click"  />
+
+        </Grid>
+        <Grid x:Name="PreviewGrid" HorizontalAlignment="Left" Height="590" Margin="10,10,0,0" VerticalAlignment="Top" Width="941" Visibility="Hidden"  >
+            <ScrollViewer x:Name="PreviewScrollViewer" Background="#FFB7FCFF" Margin="10,10,152,10"  >
+                <Image x:Name="PreviewImage" Height="0" Width="774"  />
             </ScrollViewer>
-        </Viewbox>
-        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="749,382,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton_Click" Visibility="Hidden"/>
-        <Button x:Name="StartButton" Content="Start" HorizontalAlignment="Left" Margin="424,273,0,0" VerticalAlignment="Top" Width="134" Height="43" Click="StartButton_Click"/>
-        <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="843,285,0,0" VerticalAlignment="Top" Width="75" Click="SaveButton_Click"/>
+            <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="831,235,0,0" VerticalAlignment="Top" Width="76" Click="SaveButton_Click" Height="54"  />
+            <Button x:Name="PreviewCancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="832,344,0,0" VerticalAlignment="Top" Width="75" Click="PreviewCancelButton_Click"  />
+
+        </Grid>
+
+
+
     </Grid>
 </Window>
