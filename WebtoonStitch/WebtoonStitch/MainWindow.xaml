@@ -18,6 +18,7 @@
             <CheckBox x:Name="CustomWidthCheckBox" Content="Custom Width" HorizontalAlignment="Left" Margin="783,178,0,0" VerticalAlignment="Top" Click="CustomWidthCheckBox_Click"  />
             <TextBox x:Name="CustomWidthTextBox" HorizontalAlignment="Left" Height="23" Margin="612,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
             <Button x:Name="StitchButton" Content="Stitch Images" HorizontalAlignment="Left" Height="38" Margin="700,256,0,0" VerticalAlignment="Top" Width="96" Click="StitchButton_Click"  />
+            <Button x:Name="ReloadFilesButton" Content="Reload" HorizontalAlignment="Left" Margin="711,364,0,0" VerticalAlignment="Top" Width="75" Click="ReloadFilesButton_Click"  />
             <Button x:Name="FilesCancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="711,414,0,0" VerticalAlignment="Top" Width="75" Click="FilesCancelButton_Click"  />
 
         </Grid>
@@ -25,6 +26,7 @@
             <ScrollViewer x:Name="PreviewScrollViewer" Background="#FFB7FCFF" Margin="10,10,152,10"  >
                 <Image x:Name="PreviewImage" Height="0" Width="774"  />
             </ScrollViewer>
+            <TextBox x:Name="FileNameTextBox" HorizontalAlignment="Left" Height="23" Margin="811,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="True"/>
             <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="831,235,0,0" VerticalAlignment="Top" Width="76" Click="SaveButton_Click" Height="54"  />
             <Button x:Name="PreviewCancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="832,344,0,0" VerticalAlignment="Top" Width="75" Click="PreviewCancelButton_Click"  />
 

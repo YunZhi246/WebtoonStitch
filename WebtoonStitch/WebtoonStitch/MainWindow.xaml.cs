@@ -41,7 +41,6 @@ namespace WebtoonStitch
 
         private bool StartWorking()
         {
-            List<string> fileNames = new List<string>();
             this.Directory = ChooseFolder();
 
             if (this.Directory == string.Empty)
@@ -50,6 +49,28 @@ namespace WebtoonStitch
                 return false;
             }
 
+            LoadImages();
+
+            return true;
+        }
+        private string ChooseFolder()
+        {
+            string path = string.Empty;
+            FolderBrowserDialog chooseFolder = new FolderBrowserDialog();
+            chooseFolder.ShowNewFolderButton = false;
+            chooseFolder.RootFolder = Environment.SpecialFolder.MyComputer;
+            chooseFolder.SelectedPath = ""/*@"Z:\new"*/;
+            DialogResult result = chooseFolder.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                path = chooseFolder.SelectedPath;
+            }
+
+            return path;
+        }
+        private void LoadImages()
+        {
+            List<string> fileNames = new List<string>();
             //FIX THIS LATER, SKETCHY WAY
             string[] files = System.IO.Directory.GetFiles(this.Directory, "*.jpg");
             fileNames = files.ToList<string>();
@@ -70,23 +91,6 @@ namespace WebtoonStitch
             List<String> sortedNames = masterFileNames.Keys.ToList();
             sortedNames.Sort();
             this.FilesListBox.ItemsSource = sortedNames;
-
-            return true;
-        }
-        private string ChooseFolder()
-        {
-            string path = string.Empty;
-            FolderBrowserDialog chooseFolder = new FolderBrowserDialog();
-            chooseFolder.ShowNewFolderButton = false;
-            chooseFolder.RootFolder = Environment.SpecialFolder.MyComputer;
-            chooseFolder.SelectedPath = ""/*@"Z:\new"*/;
-            DialogResult result = chooseFolder.ShowDialog();
-            if (result == System.Windows.Forms.DialogResult.OK)
-            {
-                path = chooseFolder.SelectedPath;
-            }
-
-            return path;
         }
 
         private void StitchImages()
@@ -222,6 +226,10 @@ namespace WebtoonStitch
             updateView();
         }
 
+        private void ReloadFilesButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.LoadImages();
+        }
         private void FilesCancelButton_Click(object sender, RoutedEventArgs e)
         {
             view = "START";
@@ -229,8 +237,13 @@ namespace WebtoonStitch
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            finalImage.Save(this.Directory + "\\FINALIMAGE.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            view = "START";
+            string name = FileNameTextBox.Text;
+            if (name == String.Empty)
+            {
+                name = "FINALIMAGE";
+            }
+            finalImage.Save(this.Directory + "\\" + name + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            view = "FILES";
             updateView();
         }
         private void PreviewCancelButton_Click(object sender, RoutedEventArgs e)
